@@ -14,3 +14,17 @@ exports.getOffreCastings = (req, res, next) => {
     });
 
 }
+
+exports.getOffreCastingsById = (req, res, next) => {
+    const { id } = req.params;
+    axios.get('https://megacastingprivateapi.azurewebsites.net/offreCastings/formated/' + id )
+    .then(result => {
+        res.status(200).json(result.data);
+    })
+    .catch(err => {
+        if (!err.statusCode) {
+            err.statusCode = 500;
+        }
+        next(err);
+    });
+}
