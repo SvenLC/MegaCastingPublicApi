@@ -3,7 +3,7 @@ const axios = require('axios');
 exports.getOffreCastings = (req, res, next) => {
     axios.get('https://megacastingprivateapi.azurewebsites.net/offreCastings/formated')
     .then(offres => {        
-        res.status(200).json({offres: offres.data});       
+        res.status(200).json(offres.data);       
         
     })
     .catch(err => {
