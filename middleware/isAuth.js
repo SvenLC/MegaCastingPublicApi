@@ -4,11 +4,15 @@ const dns = require('dns');
 module.exports = (req, res, next) => {
     const autHeader = req.get('Authorization');
     const domain = 'megacastingwebsite.herokuapp.com';
-    const ip = req.ip;
-    dns.lookup('megacastingwebsite.herokuapp.com', (err, adresse) => {
-        res.status(200).json({adresse, ip});
-        // Prints: localhost ssh
-      });
+    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    console.log(req.headers);
+
+    res.status(200).json(ip);
+    
+    // dns.lookup('megacastingwebsite.herokuapp.com', (err, adresse) => {
+    //     res.status(200).json(req.header);
+    //     // Prints: localhost ssh
+    //   });
     
     // if (req.hostname == domain) {
     //     console.log('Auth ok !');
