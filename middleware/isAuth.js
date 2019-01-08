@@ -4,9 +4,9 @@ const dns = require('dns');
 module.exports = (req, res, next) => {
     const autHeader = req.get('Authorization');
     const domain = 'https://megacastingwebsite.herokuapp.com';
-    const ip = req.get('Origin');
+    const url = req.get('Origin');
 
-    if (ip == domain) {
+    if (url == domain) {
 
         next();
 
