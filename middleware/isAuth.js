@@ -4,18 +4,20 @@ const dns = require('dns');
 module.exports = (req, res, next) => {
     
     const domain = 'megacastingwebsite.herokuapp.com';
-    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    const ipWP = ip.split(':')[0];
-    let ipWebSite;      
+    const ip = req.get('Origin');
+    //const ipWP = ip.split(':')[0];
+    let ipWebSite;    
+    
+ 
     
     dns.lookup(domain, (err, adresse) => {
         ipWebSite = adresse;
-        res.status(200).json({ipWP: ipWP, ipWebSite: ipWebSite});
+        res.status(200).json({ipWP: ip, ipWebSite: ipWebSite});
         
         
     }) 
     
-    if (ipWP == ipWebSite) {        
+    if (ip == domain) {        
         next();
     }
     // else {
