@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
 
 
     
-    if (autHeader == eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6IkJlbmphbWluIiwiaWQiOjI2LCJpYXQiOjE1NDY5MTYxOTIsImV4cCI6MTU0NzAwMjU5Mn0.gwsOGmpy9iKY2f7XXeIR8L4gSoxOUWyQH5VilzngDgA) {        
+    if (autHeader == 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6IkJlbmphbWluIiwiaWQiOjI2LCJpYXQiOjE1NDY5MTYxOTIsImV4cCI6MTU0NzAwMjU5Mn0.gwsOGmpy9iKY2f7XXeIR8L4gSoxOUWyQH5VilzngDgA') {        
         next();
     }
     else {
