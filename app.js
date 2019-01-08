@@ -17,7 +17,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/offreCastings',offreRoutes);
+app.use('/offreCastings',isAuth, offreRoutes);
 app.use('/auth', authRoutes);
 
 app.use((error, req, res, next) => {
