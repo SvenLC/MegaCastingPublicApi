@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const dns = require('dns');
 
 module.exports = (req, res, next) => {
-    const autHeader = req.get('Authorization');
+    
     const domain = 'megacastingwebsite.herokuapp.com';
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     const ipWP = ip.split(':')[0];
@@ -18,6 +18,9 @@ module.exports = (req, res, next) => {
         next();
     }
     else {
+
+        const autHeader = req.get('Authorization');
+        
         if (!autHeader) {
             const error = new Error('Non authentifié');
             error.statusCode = 401;
@@ -36,7 +39,7 @@ module.exports = (req, res, next) => {
             error.statusCode = 401;
             throw error;
         }
-        //req.userId = decodedToken.userId;
+        req.userId = decodedToken.userId;
         next();
     } 
     
