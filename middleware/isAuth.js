@@ -5,14 +5,20 @@ module.exports = (req, res, next) => {
     const autHeader = req.get('Authorization');
     const domain = 'megacastingwebsite.herokuapp.com';
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    console.log(req.headers);
-
-    res.status(200).json(ip);
+    const ipWP = ip.split(':')[0];
+    let ipWebSite;      
     
-    // dns.lookup('megacastingwebsite.herokuapp.com', (err, adresse) => {
-    //     res.status(200).json(req.header);
-    //     // Prints: localhost ssh
-    //   });
+    dns.lookup('megacastingwebsite.herokuapp.com', (err, adresse) => {
+        ipWebSite = adresse;
+        res.status(200).json({ipWP: ipWP, ipWebSite: ipWebSite});
+        // .split(':')[0]
+        // Prints: localhost ssh
+    })
+    
+        
+   
+
+    
     
     // if (req.hostname == domain) {
     //     console.log('Auth ok !');
