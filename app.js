@@ -1,10 +1,14 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+
 
 const app = express();
 const port = process.env.PORT || 4000;
 
 const offreRoutes = require('./routes/offreCasting');
+const authRoutes = require('./routes/auth');
 
+app.use(bodyParser.json());
 app.use((req, res, next) => {
     res.setHeader('Acces-Control-Allow-Origin', '*');
     res.setHeader('Acces-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
@@ -13,6 +17,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/offreCastings', offreRoutes);
+app.use('/auth', authRoutes);
 
 app.use((error, req, res, next) => {
     console.log(error);
