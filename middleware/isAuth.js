@@ -6,10 +6,10 @@ module.exports = (req, res, next) => {
     const domain = 'https://megacastingwebsite.herokuapp.com';
     const ip = req.get('Origin');
 
-
-
     if (ip == domain) {
+
         next();
+
     } else {
 
         if (!autHeader) {
