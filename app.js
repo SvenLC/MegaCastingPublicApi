@@ -7,6 +7,7 @@ const port = process.env.PORT || 4000;
 
 const offreRoutes = require('./routes/offreCasting');
 const authRoutes = require('./routes/auth');
+const isAuth = require('./middleware/isAuth');
 
 app.use(bodyParser.json());
 app.use((req, res, next) => {
@@ -16,7 +17,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/offreCastings', offreRoutes);
+app.use('/offreCastings',isAuth, offreRoutes);
 app.use('/auth', authRoutes);
 
 app.use((error, req, res, next) => {

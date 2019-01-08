@@ -4,7 +4,7 @@ const axios = require('axios');
 exports.login = (req, res, next) => {    
     const login = req.body.PAR_LOGIN;
     const password = req.body.PAR_MDP;
-    let loadedUser;
+    let loadedUser;    
     axios.get('https://megacastingprivateapi.azurewebsites.net/partenaires/findByLogin/' + login)
         .then(result => {            
             if (!result) {
@@ -38,3 +38,5 @@ exports.login = (req, res, next) => {
 
         });
 };
+
+console.log(req.headers.host);
