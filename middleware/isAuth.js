@@ -5,17 +5,6 @@ module.exports = (req, res, next) => {
     
     const domain = 'megacastingwebsite.herokuapp.com';
     const ip = req.get('Origin');
-    //const ipWP = ip.split(':')[0];
-    let ipWebSite;    
-    
- 
-    
-    dns.lookup(domain, (err, adresse) => {
-        ipWebSite = adresse;
-        res.status(200).json({ipWP: ip, ipWebSite: ipWebSite});
-        
-        
-    }) 
     
     if (ip == domain) {        
         next();
