@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
     
     dns.lookup('megacastingwebsite.herokuapp.com', (err, adresse) => {
         ipWebSite = adresse;
-        res.status(200).json({ipWP: ipWP, ipWebSite: ipWebSite});
+        //res.status(200).json({ipWP: ipWP, ipWebSite: ipWebSite});
         
     }) 
     
