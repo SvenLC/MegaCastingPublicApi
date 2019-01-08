@@ -3,8 +3,7 @@ const jwt = require('jsonwebtoken');
 module.exports = (req, res, next) => {
     const autHeader = req.get('Authorization');
     const domain = 'megacastingwebsite.herokuapp.com'
-    res.status(200).json(req.headers.host);
-    if (req.headers.host == domain) {
+    if (req.hostname == domain) {
         console.log('Auth ok !');
         next();
     }
