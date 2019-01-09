@@ -25,7 +25,7 @@ exports.login = (req, res, next) => {
             const token = jwt.sign({
                 login: loadedUser.PAR_LOGIN,
                 id: loadedUser.PRO_ID
-            }, 'BDB971EA6E6788317F359F23E86C5',
+            }, '8A4F212723828F68DB6B7A1072305CA4425E120815D35AC44FFC177CC890DDE1',
                 { expiresIn: '24h' }
             );
             res.status(200).json({ PRO_ID: loadedUser.PRO_ID.toString(), PAR_TOKEN: token });

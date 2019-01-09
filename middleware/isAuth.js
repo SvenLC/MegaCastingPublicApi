@@ -1,12 +1,13 @@
 const jwt = require('jsonwebtoken');
-const dns = require('dns');
 
 module.exports = (req, res, next) => {
     const autHeader = req.get('Authorization');
     const domain = 'https://megacastingwebsite.herokuapp.com';
+    const local = 'http://localhost:4000';
     const url = req.get('Origin');
+    const secret = '8A4F212723828F68DB6B7A1072305CA4425E120815D35AC44FFC177CC890DDE1';
 
-    if (url == domain) {
+    if (url == domain || url == local) {
 
         next();
 
@@ -20,7 +21,7 @@ module.exports = (req, res, next) => {
         const token = autHeader.split(' ')[1];
         let decodedToken;
         try {
-            decodedToken = jwt.verify(token, 'BDB971EA6E6788317F359F23E86C5');
+            decodedToken = jwt.verify(token, secret);
         } catch (error) {
             error.statusCode = 500;
             throw error;
